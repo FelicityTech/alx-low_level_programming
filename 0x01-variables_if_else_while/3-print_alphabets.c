@@ -6,17 +6,18 @@
  * Return: Aways 0 (Sucess)
  */
 int main(void)
-{
-	char ch = 'a';
+char c;
 
-	while (ch <= 'z')
+	for (c = 'a'; c <= 'z'; c++)
 	{
-		if (ch != 'e' && ch != 'q')
-		{
-			putchar(ch);
-		}
-		ch++;
+		putchar(c);
 	}
+
+	for (c = 'A'; c <= 'Z'; c++)
+	{
+		putchar(c);
+	}
+
 	putchar('\n');
 	return (0);
 }
