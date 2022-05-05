@@ -1,43 +1,45 @@
 #include "main.h"
 #include <stdlib.h>
-#include <stdio.h>
 /**
- * str_concat - concatenates 2 strings
- *
- * @s1: first string
- * @s2: string to add to end of of first string
- *
- * Return: pointer to newly allocated string concatenation
- */
-char *str_concat(char *s1, char *s2)
+  *_strdup - returns a pointer to a newly alloctaed
+  *space in memory which contains a copy of the string
+  *passed.
+  *@str: pointer to string being duplicated.
+  *
+  *Return: NULL if str is NULL.
+  *pointer to duplicated string on success.
+  *NULL if memory was insufficient.
+  */
+char *_strdup(char *str)
 {
-	unsigned int size1 = 0, size2 = 0;
-	char *ptr, *ret;
+	char *nstr;
+	unsigned int len, i;
 
-	ptr = s1;
-	if (s1)
-		while (*ptr++)
-			size1++;
-	else
-		s1 = "";
-
-	ptr = s2;
-	if (s2)
-		while (*ptr++)
-			size2++;
-	else
-		s2 = "";
-
-	ret = malloc(size1 + size2 + 1);
-	if (!ret)
+	/* check is str is null */
+	if (str == NULL)
+	{
 		return (NULL);
+	}
 
-	ptr = ret;
-	while (*s1)
-		*ptr++ = *s1++;
-	while (*s2)
-		*ptr++ = *s2++;
-	*ptr = 0;
+	len = 0;
+	while (str[len] != '\0')
+	{
+		len++;
+	}
 
-	return (ret);
+	nstr = malloc(sizeof(char) * (len + 1));
+
+	/*check if malloc was successful*/
+	if (nstr == NULL)
+	{
+		return (NULL);
+	}
+
+	for (i = 0; i < len; i++)
+	{
+		nstr[i] = str[i];
+	}
+	nstr[len] = '\0';
+	return (nstr);
+
 }
